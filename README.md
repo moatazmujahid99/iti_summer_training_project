@@ -1,19 +1,19 @@
 # important Notes
 
-## How to get data from models
+#### How to get data from models
 
-### Get all the comments of specific post:
+##### Get all the comments of specific post:
 ```
 $post->comments;
 ```
 
-### Get the user who created a comment 
+##### Get the user who created a comment 
 ```
 foreach($post->comments as $comment)
     $comment->user;
 ```
 
-### Get all the posts of specific user:
+##### Get all the posts of specific user:
 ```
 $user->posts;
 ```

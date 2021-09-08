@@ -1,5 +1,6 @@
 # important Notes
-##How to get data from models
+
+## How to get data from models
 
 ### Get all the comments of specific post:
 ```

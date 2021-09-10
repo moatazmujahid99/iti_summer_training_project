@@ -33,7 +33,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        {{--recommended(of course, change the style)--}}
+                        @auth
+                        <li><a href="/friends">My friends</a></li>&nbsp; &nbsp;
+                        <li><a href="/requests">Friend requests</a></li>&nbsp; &nbsp;
+                        <li><a href="/users">people</a></li>&nbsp; &nbsp;
+                        @endauth
+                        {{----------------------}}
                     </ul>
 
                     <!-- Right Side Of Navbar -->

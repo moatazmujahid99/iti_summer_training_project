@@ -52,7 +52,7 @@ class FriendController extends Controller
     public function deny_friend_request($id)
     {
         $sender = User::where("id", $id)->first();
-        Auth::user()->denyFriendRequest($sender);
+        Auth::user()->unfriend($sender);
 
         // don't change the path
         return back();  //it means that you return to the previous view

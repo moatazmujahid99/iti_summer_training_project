@@ -5,6 +5,7 @@
 1. now you are on your development branch ex:"feature_1" on local repo
 2. git fetch origin
 3. git merge origin/main
+4. php artisan migrate:fresh
 
 ### How to get data from models
 

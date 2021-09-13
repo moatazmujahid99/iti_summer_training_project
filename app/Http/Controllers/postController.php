@@ -13,7 +13,7 @@ use App\Http\Controllers\Controller;
     class postController extends Controller
 {
     
-    $posts = Post::latest()->get();
+    $posts = Post::latest()->get(); 
 
     // Pass Post Collection to view
     return view('posts.index', compact('posts'));
@@ -29,9 +29,9 @@ public function store(Request $request)
 {
     // Validate posted form data
     $validated = $request->validate([
-        'title' => 'required|string|unique:posts|min:5|max:100',
-        'content' => 'required|string|min:5|max:2000',
-        'category' => 'required|string|max:30'
+        'user_id' => 'required|string|unique:posts|min:1|max:100',
+        'description' => 'required|string|min:5|max:2000',
+        'post_img' => 'required'
     ]);
 
     
@@ -53,9 +53,9 @@ public function update(Request $request, Post $post)
 {
     // Validate posted form data
     $validated = $request->validate([
-        'title' => 'required|string|unique:posts|min:5|max:100',
-        'content' => 'required|string|min:5|max:2000',
-        'category' => 'required|string|max:30'
+        'user_id' => 'required|string|unique:posts|min:1|max:100',
+        'description' => 'required|string|min:5|max:2000',
+        'post_img' => 'required'
     ]);
 
        

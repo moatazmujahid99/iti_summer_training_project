@@ -31,13 +31,17 @@ public function store(Request $request)
     $validated = $request->validate([
         'user_id' => 'required|string|unique:posts|min:1|max:100',
         'description' => 'required|string|min:5|max:2000',
-        'post_img' => 'required'
+        'post_img' => 'required|string'
     ]);
 
     
 
     // Create and save post with validated data
-    $post = Post::create($validated);
+    $post=Post::create(
+        'description' =>$request->description,
+        'user_id' =>Auth::user()->id,
+        'post_img' =>$request->post_img,
+        )
 
     // Redirect the user to the created post with a success notification
     return redirect(route('posts.show', [$post->slug]))->with('notification', 'Post created!');
@@ -55,11 +59,15 @@ public function update(Request $request, Post $post)
     $validated = $request->validate([
         'user_id' => 'required|string|unique:posts|min:1|max:100',
         'description' => 'required|string|min:5|max:2000',
-        'post_img' => 'required'
+        'post_img' => 'required|string'
     ]);
 
        
-    $post->update($validated);
+    $post->update(
+        'description' =>$request->description,
+        'user_id' =>Auth::user()->id,
+        'post_img' =>$request->post_img,
+        );
 
     // Redirect the user to the created post woth an updated notification
     return redirect(route('posts.index', [$post->slug]))->with('notification', 'Post updated!');

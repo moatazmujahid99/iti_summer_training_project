@@ -8,13 +8,11 @@ use App\Category;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Http\Controllers\Controller;
 
-
-class postController extends Controller
+    class postController extends Controller
 {
-    public function index()
-{
-    // Get all Posts, ordered by the newest first
+    
     $posts = Post::latest()->get();
 
     // Pass Post Collection to view
@@ -23,7 +21,7 @@ class postController extends Controller
 
 public function create()
 {
-    // Show create post form
+    
     return view('posts.create');
 }
 
@@ -36,8 +34,7 @@ public function store(Request $request)
         'category' => 'required|string|max:30'
     ]);
 
-    // Create slug from title
-    $validated['slug'] = Str::slug($validated['title'], '-');
+    
 
     // Create and save post with validated data
     $post = Post::create($validated);
@@ -48,15 +45,9 @@ public function store(Request $request)
 
 public function show(Post $post)
 {
-    // Pass current post to view
+    
     return view('posts.show', compact('post'));
 }
-
-public function edit(Post $post)
-{
-    return view('posts.edit', compact('post'));
-}
-
 
 public function update(Request $request, Post $post)
 {
@@ -67,19 +58,22 @@ public function update(Request $request, Post $post)
         'category' => 'required|string|max:30'
     ]);
 
-    // Create slug from title
-    $validated['slug'] = Str::slug($validated['title'], '-');
-
-    // Update Post with validated data
+       
     $post->update($validated);
 
     // Redirect the user to the created post woth an updated notification
     return redirect(route('posts.index', [$post->slug]))->with('notification', 'Post updated!');
+} 
+
+public function edit(Post $post)
+{
+    return view('posts.edit', compact('post'));
 }
+
 
 public function destroy(Post $post)
 {
-    // Delete the specified Post
+    
     $post->delete();
 
     // Redirect user with a deleted notification
@@ -87,3 +81,4 @@ public function destroy(Post $post)
 }
 
 }
+

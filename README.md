@@ -39,10 +39,10 @@ second we go to this branch using <br>
 <br>
 
 ### step 5:
-now after finshing our task we need to push our work to development branch <br>
+now after finshing our task we need to push our work to our branch <br>
 *note: we push to development branch not master branch so if any thing go wrong our master wont affected by it* <br>
 we do this using
-- `git push origin development`
+- `git push origin [branch_name]`
 
 <br>
 

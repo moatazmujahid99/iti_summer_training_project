@@ -12,8 +12,11 @@ use App\Http\Controllers\Controller;
 
     class postController extends Controller
 {
-    
-    $posts = Post::latest()->get(); 
+
+public function index(){
+
+    // Get all Posts, ordered by the newest first
+    $posts = Post::latest()->get();
 
     // Pass Post Collection to view
     return view('posts.index', compact('posts'));
@@ -37,14 +40,14 @@ public function store(Request $request)
     
 
     // Create and save post with validated data
-    $post=Post::create(
+    $post=Post::create([
         'description' =>$request->description,
         'user_id' =>Auth::user()->id,
         'post_img' =>$request->post_img,
-        )
+    ]);
 
     // Redirect the user to the created post with a success notification
-    return redirect(route('posts.show', [$post->slug]))->with('notification', 'Post created!');
+   
 }
 
 public function show(Post $post)
@@ -63,14 +66,14 @@ public function update(Request $request, Post $post)
     ]);
 
        
-    $post->update(
+    $post->update([
         'description' =>$request->description,
         'user_id' =>Auth::user()->id,
         'post_img' =>$request->post_img,
-        );
+    ]);
 
     // Redirect the user to the created post woth an updated notification
-    return redirect(route('posts.index', [$post->slug]))->with('notification', 'Post updated!');
+    
 } 
 
 public function edit(Post $post)

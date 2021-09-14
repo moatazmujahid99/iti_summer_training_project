@@ -58,6 +58,7 @@
    </div>
 @stop
 
+
 @section('create_post')
 <div class="panel rounded shadow">
         <form action="...">

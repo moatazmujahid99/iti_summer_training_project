@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,9 +16,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users=User::all();
+        $users = User::all();
         //return view("users.index",compact("users"));
-        return 'hello index'.$users;
+        return 'hello index' . $users;
     }
 
     /**
@@ -27,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-         return 'hello create';
+        return 'hello create';
     }
 
     /**
@@ -49,9 +50,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-       $user= Auth::user();
-       return 'show user'.$id;
-      // return view("users.show",compact("user"));
+        $user = Auth::user();
+        return 'show user' . $id;
+        // return view("users.show",compact("user"));
     }
 
     /**
@@ -62,9 +63,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user= Auth::user();
-        return 'edit user'.$id;
-       // return view("users.edit",compact("user"));
+        $user = Auth::user();
+        return 'edit user' . $id;
+        // return view("users.edit",compact("user"));
     }
 
     /**
@@ -76,17 +77,19 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user=User::find($id);
-        $user->name= $request->name;
-       // $user->email= $request->email;
-      //  $user->city= $request->city;
-      //  $user->description= $request->description;
-      //  $user->birthdate= $request->birthdate;
-       // $user->password= $request->password;
+
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->city = $request->city;
+        $user->description = $request->description;
+        $user->birthdate = $request->birthdate;
+        $user->password = $request->password;
         $user->save();
-     //   return redirect('/users'); 
-       return 'update user'.$id;
-       }
+
+        //   return redirect('/users'); 
+        return 'update user' . $id;
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -98,6 +101,6 @@ class UserController extends Controller
     {
         User::destroy($id);
         //return redirect("/users"); 
-        return 'destroy user'.$id;
+        return 'destroy user' . $id;
     }
 }

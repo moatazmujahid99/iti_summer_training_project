@@ -50,7 +50,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = Auth::user();
+        $user = User::find($id);
         return 'show user' . $id;
         // return view("users.show",compact("user"));
     }

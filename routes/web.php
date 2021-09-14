@@ -32,3 +32,4 @@ Route::get('/users/{id}', [UserController::class,"show"]);
 Route::get('/users/{id}/edit', [UserController::class,"edit"]);
 Route::PUT('/users/{id}', [UserController::class,"update"]);
 Route::DELETE('/users/{id}', [UserController::class,"destroy"]);
+Route::resource('comments', 'CommentController');

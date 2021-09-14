@@ -1,15 +1,33 @@
 @extends('layouts.sign_header')
 @section('form')
-<form action="#">
+<form method="POST" action="{{ route('login') }}">
+    @csrf
 			<h1>Sign in</h1><br>
 			<span>or use your account</span>
-<!--****Email & Password****-->
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-			<br>
-<!--****Sign In Button****-->
-            <button><a style="color: white;" href="{{ url('/home')}}">Sign In</a></button>
-		</form>
+    <!--****Email & Password****-->
+    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email" >
+
+    @error('email')
+        <span class="invalid-feedback" role="alert">
+            <strong style="font-size: 10px; color:red">{{ $message }}</strong>
+        </span>
+    @enderror
+
+
+    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required placeholder="Password">
+
+    @error('password')
+        <span class="invalid-feedback" role="alert">
+            <strong style="font-size: 10px; color:red">{{ $message }}</strong>
+        </span>
+    @enderror
+
+	<br>
+    <!--****Sign In Button****-->
+    <button type="submit" class="btn btn-primary">
+        {{ __('Sign In') }}
+    </button>
+</form>
 @stop
 
 @section('right_text')
@@ -19,4 +37,4 @@
 				<button class="ghost" id="signUp"><a style="color: white;" href="{{ url('/signup')}}">Sign Up</a></button>
 			</div>
 @stop
-		
+

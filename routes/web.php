@@ -21,4 +21,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('commment/{id}','commentController@addComment')->name('comment');
+Route::resource('comments', 'CommentController');

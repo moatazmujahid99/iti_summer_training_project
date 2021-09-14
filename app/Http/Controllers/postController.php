@@ -46,7 +46,7 @@ public function store(Request $request)
         'post_img' =>$request->post_img,
     ]);
 
-    // Redirect the user to the created post with a success notification
+    // return !!
    
 }
 
@@ -72,7 +72,7 @@ public function update(Request $request, Post $post)
         'post_img' =>$request->post_img,
     ]);
 
-    // Redirect the user to the created post woth an updated notification
+    // return !!
     
 } 
 
@@ -87,8 +87,8 @@ public function destroy(Post $post)
     
     $post->delete();
 
-    // Redirect user with a deleted notification
-    return redirect(route('posts.index'))->with('notification', '"' . $post->title .  '" deleted!');
+    // return !!
+    
 }
 
 }

@@ -2,6 +2,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Post;
@@ -18,7 +19,7 @@ public function index(){
 
     $posts = Post::latest()->get();
 
-    // Pass Post Collection to view
+    
     return view('posts.index', compact('posts'));
 }   
 
@@ -34,7 +35,7 @@ public function store(Request $request)
     $validated = $request->validate([
         'user_id' => 'required|string|unique:posts|min:1|max:100',
         'description' => 'required|string|min:5|max:2000',
-        'post_img' => 'required|string'
+        'post_img' => 'required|mimes:jpg,png,jpeg|max:5048'
     ]);
 
     
@@ -45,8 +46,9 @@ public function store(Request $request)
         'user_id' =>Auth::user()->id,
         'post_img' =>$request->post_img,
     ]);
-
-    // return !!
+    
+    //return!
+    return redirect ('/post');
    
 }
 
@@ -62,7 +64,7 @@ public function update(Request $request, Post $post)
     $validated = $request->validate([
         'user_id' => 'required|string|unique:posts|min:1|max:100',
         'description' => 'required|string|min:5|max:2000',
-        'post_img' => 'required|string'
+        'post_img' => 'required|mimes:jpg,png,jpeg|max:5048'
     ]);
 
        
@@ -73,6 +75,7 @@ public function update(Request $request, Post $post)
     ]);
 
     // return !!
+    return redirect ('/post');
     
 } 
 
@@ -87,7 +90,8 @@ public function destroy(Post $post)
     
     $post->delete();
 
-    // return !!
+    // return deleted!!
+    return redirect ('');
     
 }
 

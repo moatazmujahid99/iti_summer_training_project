@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\Http\Controllers;
@@ -8,14 +9,13 @@ use App\Category;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Http\Controllers\Controller;
 
     class postController extends Controller
 {
 
 public function index(){
 
-    // Get all Posts, ordered by the newest first
+
     $posts = Post::latest()->get();
 
     // Pass Post Collection to view

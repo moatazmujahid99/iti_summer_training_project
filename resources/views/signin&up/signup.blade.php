@@ -37,7 +37,7 @@
         </span>
     @enderror
 
-    <input type="password" name="password_confirmation" placeholder="confim password" />
+    <input type="password" name="password_confirmation" placeholder="confirm password" />
 
     <input id="birthdate" type="text" class="form-control @error('birthdate') is-invalid @enderror" name="birthdate" placeholder="Birth Date">
 

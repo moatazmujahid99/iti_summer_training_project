@@ -111,6 +111,7 @@ class ComposerStaticInita575d55d96e2f58938051589b34c303f
         ),
         'M' => 
         array (
+            'Multicaret\\Acquaintances\\' => 25,
             'Monolog\\' => 8,
         ),
         'L' => 
@@ -352,6 +353,10 @@ class ComposerStaticInita575d55d96e2f58938051589b34c303f
         array (
             0 => __DIR__ . '/..' . '/nunomaduro/collision/src',
         ),
+        'Multicaret\\Acquaintances\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src',
+        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
@@ -499,6 +504,7 @@ class ComposerStaticInita575d55d96e2f58938051589b34c303f
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -2893,6 +2899,27 @@ class ComposerStaticInita575d55d96e2f58938051589b34c303f
         'Monolog\\SignalHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/SignalHandler.php',
         'Monolog\\Test\\TestCase' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Test/TestCase.php',
         'Monolog\\Utils' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Utils.php',
+        'Multicaret\\Acquaintances\\AcquaintancesServiceProvider' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/AcquaintancesServiceProvider.php',
+        'Multicaret\\Acquaintances\\Interaction' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/Interaction.php',
+        'Multicaret\\Acquaintances\\Models\\FriendFriendshipGroups' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/Models/FriendFriendshipGroups.php',
+        'Multicaret\\Acquaintances\\Models\\Friendship' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/Models/Friendship.php',
+        'Multicaret\\Acquaintances\\Models\\InteractionRelation' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/Models/InteractionRelation.php',
+        'Multicaret\\Acquaintances\\Status' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/Status.php',
+        'Multicaret\\Acquaintances\\Traits\\CanBeFavorited' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/Traits/CanBeFavorited.php',
+        'Multicaret\\Acquaintances\\Traits\\CanBeFollowed' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/Traits/CanBeFollowed.php',
+        'Multicaret\\Acquaintances\\Traits\\CanBeLiked' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/Traits/CanBeLiked.php',
+        'Multicaret\\Acquaintances\\Traits\\CanBeRated' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/Traits/CanBeRated.php',
+        'Multicaret\\Acquaintances\\Traits\\CanBeSubscribed' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/Traits/CanBeSubscribed.php',
+        'Multicaret\\Acquaintances\\Traits\\CanBeViewed' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/Traits/CanBeViewed.php',
+        'Multicaret\\Acquaintances\\Traits\\CanBeVoted' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/Traits/CanBeVoted.php',
+        'Multicaret\\Acquaintances\\Traits\\CanFavorite' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/Traits/CanFavorite.php',
+        'Multicaret\\Acquaintances\\Traits\\CanFollow' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/Traits/CanFollow.php',
+        'Multicaret\\Acquaintances\\Traits\\CanLike' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/Traits/CanLike.php',
+        'Multicaret\\Acquaintances\\Traits\\CanRate' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/Traits/CanRate.php',
+        'Multicaret\\Acquaintances\\Traits\\CanSubscribe' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/Traits/CanSubscribe.php',
+        'Multicaret\\Acquaintances\\Traits\\CanView' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/Traits/CanView.php',
+        'Multicaret\\Acquaintances\\Traits\\CanVote' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/Traits/CanVote.php',
+        'Multicaret\\Acquaintances\\Traits\\Friendable' => __DIR__ . '/..' . '/multicaret/laravel-acquaintances/src/Traits/Friendable.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Laravel/CollisionServiceProvider.php',
         'NunoMaduro\\Collision\\Adapters\\Laravel\\Commands\\TestCommand' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Laravel/Commands/TestCommand.php',

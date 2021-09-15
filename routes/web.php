@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -33,3 +35,5 @@ Route::get('/users/{id}/edit', [UserController::class,"edit"]);
 Route::PUT('/users/{id}', [UserController::class,"update"]);
 Route::DELETE('/users/{id}', [UserController::class,"destroy"]);
 Route::resource('comments', 'CommentController');
+Route::get('/', 'PostController@index');
+Route::resource('posts', 'PostController');

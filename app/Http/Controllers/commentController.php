@@ -19,7 +19,8 @@ class CommentController extends Controller
         $coment->post_id= $post->id;
         $coment->comment_text= $request->input('comment');
         $coment->save();
-        return redirect()->back();
+        //return redirect()->back();
+        return "addComment";
 
     }
 

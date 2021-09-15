@@ -14,7 +14,7 @@
     @enderror
 
 
-    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required placeholder="Password">
+    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required placeholder="Password" size="100">
 
     @error('password')
         <span class="invalid-feedback" role="alert">

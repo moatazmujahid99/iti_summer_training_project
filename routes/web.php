@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,9 @@ Route::get('/home', function () {
 Route::get('/about', function () {
     return view('about.about');
 })->middleware('auth');
+
+Route::get('/users/{id}', 'UserController@edit');
+Route::put('/users/{id}', 'UserController@update');
 
 Route::get('/friends', function () {
     return view('friends.friend_card');

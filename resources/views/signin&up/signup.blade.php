@@ -3,14 +3,22 @@
 <form method="POST" action="{{ route('register') }}">
     @csrf
     <h1>Create Account</h1>
-<!--*****Edit Info*****-->
+    <!--*****Edit Info*****-->
 
-    <input type="text"  name ="name" class="form-control @error('name') is-invalid @enderror"  value="{{ old('name') }}" placeholder="Name"/>
-    @error('name')
+    <input type="text"  name ="first_name" class="form-control @error('first_name') is-invalid @enderror"  value="{{ old('first_name') }}" placeholder="First name"/>
+    @error('first_name')
     <span class="invalid-feedback" role="alert" style="text-align: left">
         <strong style="font-size: 10px; color:red">{{ $message }}</strong>
     </span>
     @enderror
+
+    <input type="text"  name ="last_name" class="form-control @error('last_name') is-invalid @enderror"  value="{{ old('last_name') }}" placeholder="Last name"/>
+    @error('last_name')
+    <span class="invalid-feedback" role="alert" style="text-align: left">
+        <strong style="font-size: 10px; color:red">{{ $message }}</strong>
+    </span>
+    @enderror
+
 
     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="email"/>
 
@@ -31,8 +39,6 @@
 
     <input type="password" name="password_confirmation" placeholder="confim password" />
 
-    <input id="city" type="text"  name="city" placeholder="City">
-
     <input id="birthdate" type="text" class="form-control @error('birthdate') is-invalid @enderror" name="birthdate" placeholder="Birth Date">
 
     @error('birthdate')
@@ -42,7 +48,14 @@
     @enderror
 
 
-    <input type="file" id="profile_img" name="profile_img" style="background-color: white;padding:20px 0">
+
+<table >
+    <tr>
+    <td><input type="radio" id="male" name="gender" value="male" checked><label for="male"> Male </label></td>
+    <td> <input type="radio" id="female" name="gender" value="female"><label for="female"> Female </label></td>
+    </tr>
+</table>
+
     <br>
     <button type="submit" class="btn btn-primary">
                             {{ __('Sign Up') }}

@@ -12,7 +12,7 @@
 	</div>
 	<div class="overlay-container">
 		<div class="overlay">
-			@yield('right_text')	
+			@yield('right_text')
 		</div>
 	</div>
 </div>

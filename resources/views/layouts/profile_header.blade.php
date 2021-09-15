@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    
+
 </head>
 <body>
 <div class="container">
@@ -32,17 +32,28 @@
                   <div class="profile-header-content">
                      <!-- BEGIN profile-header-img -->
                      <div class="profile-header-img">
-<!-- **************My image*************--> 
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+<!-- **************My image*************-->
+                    @php
+                        if(isset(Auth::user()->user_img)){
+                            $image_path= asset('images/users/' . Auth::user()->user_img);
+                        }elseif(Auth::user()->gender === "male") {
+                            $image_path= 'https://bootdey.com/img/Content/avatar/avatar7.png';
+                        }elseif(Auth::user()->gender === "female"){
+                            $image_path='https://www.bootdey.com/img/Content/avatar/avatar3.png';
+                        }
+                    @endphp
+
+                    <img  src="{{$image_path}}" >
+
                      </div>
                      <!-- END profile-header-img -->
                      <!-- BEGIN profile-header-info -->
                      <div class="profile-header-info">
-<!-- **************My name*************-->   
-                        <h4 class="m-t-10 m-b-5">John Doe</h4>
-<!-- **************My bio*************--> 
-                        <p class="m-b-10">Web And Frontend Developer</p>
-                        <a href="{{ url('/home') }}" class="btn btn-xs btn-yellow">Timeline</a>
+<!-- **************My name*************-->
+                        <h4 class="m-t-10 m-b-5">{{Auth::user()->first_name . ' '. Auth::user()->last_name}}</h4>
+<!-- **************My bio*************-->
+                        <p class="m-b-10">{{Auth::user()->description}}</p>
+                        <a href="{{ url('/home') }}" class="btn btn-primary btn-sm">Timeline</a>
                      </div>
                      <!-- END profile-header-info -->
                   </div>
@@ -61,7 +72,7 @@
             <!-- end profile -->
 
             @yield('contant')
-            
+
          </div>
       </div>
    </div>

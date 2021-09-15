@@ -22,13 +22,23 @@
                 <div class="inner-all">
                     <ul class="list-unstyled">
                         <li class="text-center">
-                            <img data-no-retina="" class="img-circle img-responsive img-bordered-primary" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="John Doe">
+                            @php
+                                if(isset(Auth::user()->user_img)){
+                                    $image_path= asset('images/users/' . Auth::user()->user_img);
+                                }elseif(Auth::user()->gender === "male") {
+                                    $image_path= 'https://bootdey.com/img/Content/avatar/avatar7.png';
+                                }elseif(Auth::user()->gender === "female"){
+                                    $image_path='https://www.bootdey.com/img/Content/avatar/avatar3.png';
+                                }
+
+                            @endphp
+                            <img width="210" height="210" style="border-radius: 50%" src={{$image_path}} >
                         </li>
                         <li class="text-center">
     <!--**************My Name****************-->
-                            <h4 class="text-capitalize">{{Auth::user()->name}}</h4>
+                            <h4 class="text-capitalize">{{Auth::user()->first_name . ' '. Auth::user()->last_name}}</h4>
     <!--**************My Bio****************-->
-                            <p class="text-muted text-capitalize">web designer</p>
+                            <p class="text-muted text-capitalize">{{Auth::user()->description}}</p>
                         </li>
                         <li>
                             <a href="{{ url('/profile')}}" class="btn btn-success text-center btn-block" style="background-color: rgb(66 103 178)">My Account</a>

@@ -64,7 +64,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = Auth::user();
-        return 'edit user' . $id;
+        return view('about.edit_about');
         // return view("users.edit",compact("user"));
     }
 
@@ -77,18 +77,37 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $user = User::find($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->city = $request->city;
-        $user->description = $request->description;
-        $user->birthdate = $request->birthdate;
-        $user->password = $request->password;
-        $user->save();
 
-        //   return redirect('/users'); 
-        return 'update user' . $id;
+        $request->validate([
+            'first_name' => 'required|min:3',
+            'last_name' => 'required|min:3',
+            'phone_number' => 'nullable|numeric',
+            'description' => 'nullable|min:6',
+            'user_img' => 'nullable|mimes:jpg,jpeg,png',
+        ]);
+
+        if (isset($request->user_img)) {
+            $imageName = time() . '-' . $request->first_name . '.' . $request->user_img->extension();
+            $request->user_img->move(public_path('images/users'), $imageName);
+        } elseif (isset($user->user_img) && !(isset($request->user_img))) {
+            $imageName = $user->user_img;
+        } else {
+            $imageName = null;
+        }
+
+        $user->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'phone_number' => $request->phone_number,
+            'description' => $request->description,
+            'country' => $request->country,
+            'city' => $request->city,
+            'user_img' => $imageName,
+
+        ]);
+
+        return redirect('/about');
     }
 
     /**
@@ -100,7 +119,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::destroy($id);
-        //return redirect("/users"); 
+        //return redirect("/users");  
         return 'destroy user' . $id;
     }
 }

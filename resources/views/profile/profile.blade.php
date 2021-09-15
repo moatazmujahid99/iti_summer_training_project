@@ -1,5 +1,8 @@
-@extends('layouts.home_header')
-@section('post')
+@extends('layouts.profile_header')
+@section('contant')
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<div class="divider"></div>
+<div class="row">
 <div class="col-md-6">
             <div class="panel panel-success rounded shadow">
                 <div class="panel-heading no-border" style=" background-color:rgb(66 103 178) ">
@@ -55,28 +58,8 @@
                     </form>
                 </div><!-- /.panel-footer -->
             </div><!-- /.panel -->
-   </div>
-@stop
-
-
-@section('create_post')
-<div class="panel rounded shadow">
-        <form action="...">
-            <textarea class="form-control input-lg no-border" rows="2" placeholder="What are you doing?..."></textarea>
-  <!--***view img in post*****-->
-            <img src="" style="max-width: 150px; max-height: 160px;">
-        </form>
-        <div class="panel-footer">
-            <button class="btn btn-success pull-right mt-5" style="background-color: rgb(66 103 178)">POST</button>
-            <ul class="nav nav-pills">
-                <div class="image-upload">
-                <label for="file-input">
-                <li><i class="fa fa-camera"></i></li>
-                </label>
-  <!--***Add img in post*****-->
-                <input id="file-input" type="file"/>
-                </div>
-            </ul><!-- /.nav nav-pills -->
-        </div><!-- /.panel-footer -->
-    </div><!-- /.panel -->
+ </div>
+        
+    </div>
+    
 @stop

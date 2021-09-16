@@ -34,39 +34,64 @@
                      <div class="profile-header-img">
 <!-- **************My image*************-->
                     @php
-                        if(isset(Auth::user()->user_img)){
-                            $image_path= asset('images/users/' . Auth::user()->user_img);
-                        }elseif(Auth::user()->gender === "male") {
+                        if(isset($user->user_img)){
+                            $image_path= asset('images/users/' . $user->user_img);
+                        }elseif($user->gender === "male") {
                             $image_path= 'https://bootdey.com/img/Content/avatar/avatar7.png';
-                        }elseif(Auth::user()->gender === "female"){
+                        }elseif($user->gender === "female"){
                             $image_path='https://www.bootdey.com/img/Content/avatar/avatar3.png';
                         }
                     @endphp
 
-                    <img height="92px"  src="{{$image_path}}" >
+                    <img height="92px" src="{{$image_path}}" >
 
                      </div>
                      <!-- END profile-header-img -->
                      <!-- BEGIN profile-header-info -->
                      <div class="profile-header-info">
 <!-- **************My name*************-->
-                        <h4 class="m-t-10 m-b-5">{{Auth::user()->first_name . ' '. Auth::user()->last_name}}</h4>
+                        <h4 class="m-t-10 m-b-5">{{$user->first_name . ' '. $user->last_name}}</h4>
 <!-- **************My bio*************-->
-                        <p class="m-b-10">{{Auth::user()->description}}</p>
-                        <a href="{{ url('/home') }}" class="btn btn-primary btn-sm ">Timeline</a>
-                        <div style="height: 8px"></div>
+                        <p class="m-b-10">{{$user->description}}</p>
+
+                        @if (Auth::user()->hasSentFriendRequestTo($user))
+
+                            <span class="" style="font-weight:bold; color:white">Your Request Is Sent Successfully</span>
+
+
+                        @elseif (Auth::user()->hasFriendRequestFrom($user))
+
+                            <a href="/accept/{{$user->id}}" class="btn btn-success " style="height: 35px; padding-top:3px">Accept</a>
+                            <a href="/deny/{{$user->id}}" class="btn btn-danger " style="height: 35px; padding-top:3px">Deny</a>
+
+
+                        @elseif(Auth::user()->isFriendWith($user))
+
+                            <spna class="" style="font-weight:bold; color:white">You and {{ $user->first_name }} are friends</spna>
+
+
+
+                        @elseif(Auth::user()->id !== $user->id)
+
+                            <a href="/sent_to/{{$user->id}}" class="btn btn-primary " style="height: 35px; padding-top:3px">Add Friend</a>
+                        @endif
+
+                        <a href="/profile" class="btn btn-secondary btn-sm ml-2" style="height: 35px; padding-top:5px">Back To Your Profile</a>
+
+                        <div style="height: 6px"></div>
+
                     </div>
                      <!-- END profile-header-info -->
                   </div>
                   <!-- END profile-header-content -->
                   <!-- BEGIN profile-header-tab -->
                   <ul class="profile-header-tab nav nav-tabs">
-                     <li class="nav-item"><a class="nav-link{{ Request::is('profile*') ? ' active' : ''}}"  href="/profile" >POSTS</a></li>
-                     <li class="nav-item"><a class="nav-link{{ Request::is('about*') ? ' active' : ''}}"    href="/about">ABOUT</a></li>
-                     <li class="nav-item"><a class="nav-link{{ Request::is('people*') ? ' active' : ''}}"  href="/people">PEOPLE</a></li>
-                     <li class="nav-item"><a class="nav-link{{ Request::is('friends*') ? ' active' : ''}}"  href="/friends"  >FRIENDS</a></li>
-                     <li class="nav-item"><a class="nav-link{{ Request::is('requests*') ? ' active' : ''}}"  href="/requests">FRIEND REQUESTS</a></li>
-                  </ul>
+                     <li class="nav-item"><a class="nav-link{{ Request::is('user_posts*') ? ' active' : ''}}"  href="/user_posts/{{$user->id}}" >POSTS</a></li>
+                     <li class="nav-item"><a class="nav-link{{ Request::is('user_about*') ? ' active' : ''}}"    href="/user_about/{{$user->id}}">ABOUT</a></li>
+                     <li class="nav-item"><a class="nav-link{{ Request::is('user_friends*') ? ' active' : ''}}"  href="/user_friends/{{$user->id}}"  >FRIENDS</a></li>
+
+
+                    </ul>
                   <!-- END profile-header-tab -->
                </div>
             </div>

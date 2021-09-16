@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,24 +16,13 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/home', function () {
-    return view('home');
-})->middleware('auth');
-
-Route::get('/about', function () {
-    return view('about.about');
-})->middleware('auth');
-
-Route::get('/users/{id}', 'UserController@edit');
-Route::put('/users/{id}', 'UserController@update');
-
-Route::get('/friends', function () {
-    return view('friends.friend_card');
-})->middleware('auth');
-
-Route::get('/profile', function () {
-    return view('profile.profile');
-})->middleware('auth');
+Route::get('/signup', function () {
+    if (Auth::check()) {
+        return redirect('/home');
+    } else {
+        return view('signin&up.signup');
+    }
+});
 
 Route::get('/signin', function () {
     if (Auth::check()) {
@@ -42,14 +32,49 @@ Route::get('/signin', function () {
     }
 });
 
-Route::get('/signup', function () {
-    if (Auth::check()) {
-        return redirect('/home');
-    } else {
-        return view('signin&up.signup');
-    }
-});
+Route::get('/home', function () {
+    return view('home');
+})->middleware('auth');
+
+Route::get('/profile', function () {
+    return view('profile.profile');
+})->middleware('auth');
+
+Route::get('/about', function () {
+    return view('about.about');
+})->middleware('auth');
+
 
 Auth::routes();
+
+Route::get('/people', 'UserController@index');
+Route::get('/users', 'UserController@edit');
+Route::put('/users/{id}', 'UserController@update');
+Route::get('users/{id}', 'UserController@show');
+Route::get('user_posts/{user_id}', 'UserController@show');
+Route::get('/user_about/{user_id}', function ($id) {
+    $user = User::find($id);
+    return view('user.show_user_about', [
+        'user' => $user,
+    ]);
+});
+Route::get('/user_friends/{user_id}', function ($id) {
+    $user = User::find($id);
+    return view('user.show_user_friends', [
+        'user' => $user,
+    ]);
+});
+
+
+
+Route::get('/friends', 'FriendController@show_friends');
+Route::get('/requests', 'FriendController@show_friend_requests');
+Route::get('/sent_to/{id}', 'FriendController@sent_friend_request');
+Route::get('/accept/{id}', 'FriendController@accept_friend_request');
+Route::get('/deny/{id}', 'FriendController@deny_friend_request');
+Route::get('/unfriend/{id}', 'FriendController@unfriend');
+
+
+
 
 //Route::get('/home', 'HomeController@index')->name('home');

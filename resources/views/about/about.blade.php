@@ -81,7 +81,7 @@
                                  <td class="p-t-10 p-b-10">
    <!--**************Update Button**********-->
 
-                                    <a class="btn btn-primary width-150" href="/users/{{ auth()->user()->id }}">Edit your profile</a>
+                                    <a class="btn btn-primary width-150" href="/users">Edit your profile</a>
 
                                  </td>
                               </tr>

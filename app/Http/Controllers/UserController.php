@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         $users = User::all();
         //return view("users.index",compact("users"));
-        return 'hello index' . $users;
+        return view('user.show_all_users', compact('users'));
     }
 
     /**
@@ -51,7 +51,9 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return 'show user' . $id;
+        return view('user.show_user_posts', [
+            'user' => $user,
+        ]);
         // return view("users.show",compact("user"));
     }
 
@@ -61,7 +63,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
         $user = Auth::user();
         return view('about.edit_about');

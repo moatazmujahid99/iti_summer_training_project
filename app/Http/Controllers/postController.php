@@ -27,8 +27,7 @@ class PostController extends Controller
     public function create()
     {
 
-        //return view('posts.create');
-        return "create";
+        return redirect('');
     }
 
     public function store(Request $request)
@@ -50,8 +49,7 @@ class PostController extends Controller
         ]);
 
         //return!
-        //return redirect('/post');
-        return "store";
+        return redirect('/home');
     }
 
     public function show($id)

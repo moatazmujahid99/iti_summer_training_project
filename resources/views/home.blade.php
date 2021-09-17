@@ -32,7 +32,7 @@
                                         } elseif (Auth::user()->gender === 'female') {
                                             $image_path = 'https://www.bootdey.com/img/Content/avatar/avatar3.png';
                                         }
-                                        
+
                                     @endphp --}}
                                     <img width="210" height="210" style="border-radius: 50%"
                                         src={{ asset('images/users/' . Auth::user()->user_img) }}>

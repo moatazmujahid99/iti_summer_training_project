@@ -1,4 +1,4 @@
-<div class="col-md-6">
+<div class="col-md-12">
     <div class="panel panel-success rounded shadow">
         <div class="panel-heading no-border" style=" background-color:rgb(66 103 178) ">
             <div class="pull-left half">
@@ -32,9 +32,15 @@
                 } else {
                     $image_path = 'https://via.placeholder.com/340x210/';
                 }
-                
+
             @endphp --}}
-            <img src="{{ asset('images/posts/' . $post->post_img) }}" alt="..." class="img-responsive full-width">
+
+            @isset($post->post_img)
+            <img src="{{ asset('images/posts/' . $post->post_img) }}" class="img-responsive full-width">
+            @endisset
+
+
+
             <!-- /.inner-all -->
             <div class="line no-margin"></div><!-- /.line -->
             @foreach ($post->comments as $comment)

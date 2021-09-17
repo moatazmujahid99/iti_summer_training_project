@@ -43,7 +43,7 @@ class PostController extends Controller
             $imageName = time() . '-' . Auth::user()->first_name . '.' . $request->post_img->extension();
             $request->post_img->move(public_path('images/posts'), $imageName);
         } else {
-            $imageName = 'default.png';
+            $imageName = null;
         }
 
         // Create and save post with validated data
@@ -109,6 +109,6 @@ class PostController extends Controller
 
         // return deleted!!
         //return redirect('');
-        return "destroy";
+        return back();
     }
 }

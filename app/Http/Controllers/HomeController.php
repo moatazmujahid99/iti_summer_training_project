@@ -30,9 +30,8 @@ class HomeController extends Controller
         foreach ($friends as $friend)
             $posts = $posts->concat($friend->posts);
 
-        $posts = $posts->sortBy('created_at');
+        $posts = $posts->sortByDesc('created_at');
 
         return view('home', ['posts' => $posts]);
     }
-
 }

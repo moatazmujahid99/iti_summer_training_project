@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -38,14 +39,19 @@ class PostController extends Controller
         //     'description' => 'required|string|min:5|max:2000',
         //     'post_img' => 'required|mimes:jpg,png,jpeg|max:5048'
         // ]);
-
-
+        
+        if (isset($request->post_img)) {
+            $imageName = time() . '-' . Auth::user()->first_name . '.' . $request->post_img->extension();
+            $request->post_img->move(public_path('images/posts'), $imageName);
+        } else {
+            $imageName = 'default.png';
+        }
 
         // Create and save post with validated data
         Post::create([
             'description' => $request->description,
             'user_id' => Auth::user()->id,
-            'post_img' => $request->post_img,
+            'post_img' => $imageName,
         ]);
 
         //return!
@@ -70,10 +76,17 @@ class PostController extends Controller
 
         $post = Post::find($id);
 
+        if (isset($request->post_img)) {
+            $imageName = time() . '-' . Auth::user()->first_name . '.' . $request->post_img->extension();
+            $request->post_img->move(public_path('images/posts'), $imageName);
+        } else {
+            $imageName = null;
+        }
+
         $post->update([
             'description' => $request->description,
             'user_id' => Auth::user()->id,
-            'post_img' => $request->post_img,
+            'post_img' => $imageName,
         ]);
 
         // return !!

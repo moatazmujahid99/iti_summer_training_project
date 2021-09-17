@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\PostCommentController;
+use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\UserPostController;
 use Illuminate\Http\Request;
@@ -32,6 +33,11 @@ Route::get(
 );
 
 Route::get(
-    'posts/{id}/comments', 
+    '/posts',
+    [PostController::class, 'index']
+);
+
+Route::get(
+    '/posts/{id}/comments', 
     [PostCommentController::class, 'index']
 );

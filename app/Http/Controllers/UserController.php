@@ -14,11 +14,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
         $users = User::all();
         //return view("users.index",compact("users"));
-        return 'hello index' . $users;
+        return view('user.show_all_users', [
+            'user' => Auth::user(),
+            'users' => $users
+        ]);
     }
 
     /**
@@ -48,11 +51,32 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request ,$id)
     {
-        $user = User::find($id);
-        return 'show user' . $id;
-        // return view("users.show",compact("user"));
+        $page = explode('/', $request->getRequestUri())[3];   
+        if (Auth::id() == $id) {
+            $user = Auth::user();
+        }else{
+            $user = User::find($id);
+        }
+        if($page == 'profile'){
+            if (Auth::id() == $id) {
+                $view = 'profile.profile';
+            }else{
+                $view = 'user.show_user_posts';
+            }
+        }else{
+            if (Auth::id() == $id) {
+                $view = 'about.about';
+            }else{
+                $user = User::find($id);
+                $view = 'user.show_user_about';
+            }
+        }
+        return view($view, [
+            'user' => $user,
+            'posts' => $user->posts
+        ]);
     }
 
     /**
@@ -61,10 +85,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
         $user = Auth::user();
-        return view('about.edit_about');
+        return view('about.edit_about', compact("user"));
         // return view("users.edit",compact("user"));
     }
 
@@ -107,7 +131,7 @@ class UserController extends Controller
 
         ]);
 
-        return redirect('/about');
+        return redirect("/users/".$user->id."/about");
     }
 
     /**

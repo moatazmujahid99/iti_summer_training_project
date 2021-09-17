@@ -7,7 +7,7 @@
                   <!-- begin #profile-about tab -->
                   <div class="tab-pane fade in active show" id="profile-about">
                      <!-- begin table -->
-                     <form action="/users/{{Auth::user()->id}}" method="post" enctype="multipart/form-data">
+                     <form action="/users/{{Auth::id()}}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -69,7 +69,7 @@
                                   <tr>
                                   <td class="field"><strong> Profile Img</strong></td>
                                     <!--**************Profile Img**********-->
-                                  <td><input style="width: 353.53px" type="file" id="user_img" name="user_img" class="form-control{{ $errors->has('city') ? ' border-danger' : '' }}" style="background-color: white;" value="{{Auth::user()->user_img}}"></td>
+                                  <td><input style="width: 353.53px" type="file" id="user_img" name="user_img" class="form-control{{ $errors->has('user_img') ? ' border-danger' : '' }}" style="background-color: white;" value="{{Auth::user()->user_img}}"></td>
 
                                   <td style="font-weight: bold" class="form-text text-danger">{!! $errors->first('user_img') !!}</td>
 
@@ -84,7 +84,7 @@
                                         <button type="submit" class="btn btn-primary width-150">Update</button>
 
 
-                                        <a class="btn btn-white btn-white-without-border width-150 m-l-5" href="/about">Cancel</a>
+                                        <a class="btn btn-white btn-white-without-border width-150 m-l-5" href="/users/{{Auth::id()}}/about">Cancel</a>
                                     </td>
                                   </tr>
                                </tbody>

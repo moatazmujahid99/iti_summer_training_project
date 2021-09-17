@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => '2ade3e44b79667f866b82a46b32f920ae18b20a1',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -374,12 +374,12 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => '2ade3e44b79667f866b82a46b32f920ae18b20a1',
             'dev_requirement' => false,
         ),
         'laravel/tinker' => array(
@@ -443,6 +443,15 @@
             'install_path' => __DIR__ . '/../monolog/monolog',
             'aliases' => array(),
             'reference' => '71312564759a7db5b789296369c1a264efc43aad',
+            'dev_requirement' => false,
+        ),
+        'multicaret/laravel-acquaintances' => array(
+            'pretty_version' => 'v3.5.4',
+            'version' => '3.5.4.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../multicaret/laravel-acquaintances',
+            'aliases' => array(),
+            'reference' => 'fa372da8730802a2e18743f96aa873340021dff4',
             'dev_requirement' => false,
         ),
         'myclabs/deep-copy' => array(

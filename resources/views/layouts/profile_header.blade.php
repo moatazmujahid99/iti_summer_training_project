@@ -59,7 +59,7 @@
                                                 </h4>
                                                 <!-- **************My bio*************-->
                                                 <p class="m-b-10">{{ $user->description }}</p>
-                                                <a href="{{ url('/home') }}"
+                                                <a href="{{ url('/') }}"
                                                     class="btn btn-primary btn-sm ">Timeline</a>
                                                 <div style="height: 8px"></div>
                                             </div>

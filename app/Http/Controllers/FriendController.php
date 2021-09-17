@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class FriendController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function show_friends()
     {
         $friends = Auth::user()->getAcceptedFriendships();

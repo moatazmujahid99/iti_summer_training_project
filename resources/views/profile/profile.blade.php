@@ -59,7 +59,7 @@
                 </div><!-- /.panel-footer -->
             </div><!-- /.panel -->
  </div>
-        
+
     </div>
-    
+
 @stop

@@ -91,7 +91,7 @@
     @yield('create_post')
     <div class="row">
         @yield('post')
-        @yield('post')
+
     </div>
     </div>
     </div>

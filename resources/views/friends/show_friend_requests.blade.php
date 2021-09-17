@@ -21,7 +21,7 @@
                                 $image_path='https://www.bootdey.com/img/Content/avatar/avatar3.png';
                             }
                         @endphp
-                        <a title="Show Details" style="font-weight: bold;text-decoration: none;color:black" href="/user_posts/{{$request->sender->id}}">
+                        <a title="Show Details" style="font-weight: bold;text-decoration: none;color:black" href="/users/{{$request->sender->id}}/profile">
                             <img src="{{$image_path}}" alt="" width="74" height="62">&nbsp;
                             {{$request->sender->first_name.' '.$request->sender->last_name}}
                         </a>

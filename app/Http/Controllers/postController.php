@@ -34,12 +34,12 @@ class PostController extends Controller
     public function store(Request $request)
     {
         // Validate posted form data
-        // $validated = $request->validate([
-        //     'user_id' => 'required|string|unique:posts|min:1|max:100',
-        //     'description' => 'required|string|min:5|max:2000',
-        //     'post_img' => 'required|mimes:jpg,png,jpeg|max:5048'
-        // ]);
-        
+        $validated = $request->validate([
+            'user_id' => 'required|string|unique:posts|min:1|max:100',
+            'description' => 'required|string|min:5|max:2000',
+            'post_img' => 'nullable|mimes:jpg,png,jpeg|max:5048'
+        ]);
+
         if (isset($request->post_img)) {
             $imageName = time() . '-' . Auth::user()->first_name . '.' . $request->post_img->extension();
             $request->post_img->move(public_path('images/posts'), $imageName);

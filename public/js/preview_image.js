@@ -11,6 +11,6 @@
 // });
 
 document.getElementById('file-input').onchange = function () {
-  var src = URL.createObjectURL(this.files[0])
-  document.getElementById('show_image').src = src
+    var src = URL.createObjectURL(this.files[0])
+    document.getElementById('show_image').src = src
 }

@@ -22,7 +22,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         return view('signin&up.signup');
     })->middleware('guest');
 
-    Route::get('/signin', function () {
+    Route::get('/', function () {
         return view('signin&up.signin');
     })->middleware('guest');
 

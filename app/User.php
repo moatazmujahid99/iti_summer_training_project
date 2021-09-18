@@ -9,10 +9,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Laravel\Sanctum\HasApiTokens;
 use Multicaret\Acquaintances\Traits\Friendable;
 
+
 class User extends Authenticatable
 {
     use Notifiable;
     use Friendable;
+    use HasApiTokens;
 
     public function posts()
     {

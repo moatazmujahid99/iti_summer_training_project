@@ -66,21 +66,31 @@ class PostController extends Controller
 
     public function update(Request $request, $id)
     {
+
         // Validate posted form data
-        // $validated = $request->validate([
-        //     'user_id' => 'required|string|unique:posts|min:1|max:100',
-        //     'description' => 'required|string|min:5|max:2000',
-        //     'post_img' => 'required|mimes:jpg,png,jpeg|max:5048'
-        // ]);
+        $validated = $request->validate([
+            'description' => 'required|string|min:5|max:2000',
+            'post_img' => 'nullable|mimes:jpg,png,jpeg|max:5048'
+        ]);
+
 
         $post = Post::find($id);
+        $user = $post->user;
+
+        if (Auth::user()->id !== $post->user_id) {
+            abort(403, "You are not authorized to update a post of another user");
+        }
+
 
         if (isset($request->post_img)) {
             $imageName = time() . '-' . Auth::user()->first_name . '.' . $request->post_img->extension();
             $request->post_img->move(public_path('images/posts'), $imageName);
+        } elseif (isset($post->post_img) && !(isset($request->post_img))) {
+            $imageName = $post->post_img;
         } else {
             $imageName = null;
         }
+
 
         $post->update([
             'description' => $request->description,
@@ -90,22 +100,37 @@ class PostController extends Controller
 
         // return !!
         //return redirect('/post');
-        return "update";
+        return redirect('/users/' . $user->id . '/profile');
     }
 
     public function edit($id)
     {
-
         $post = Post::find($id);
+        $user = $post->user;
+
+        if (Auth::user()->id !== $post->user_id) {
+            abort(403, "You are not authorized to edit a post of another user");
+        }
 
         //return view('posts.edit', compact('post'));
-        return "edit";
+        return view('posts.edit_post', [
+            'post' => $post,
+            'user' => $user
+        ]);
     }
 
 
     public function destroy($id)
     {
-        Post::destroy($id);
+        $post = Post::where("id", $id)->first();
+
+        if (Auth::user()->id !== $post->user_id) {
+            abort(403, "You are not authorized to delete a post of another user");
+        }
+
+        $post->delete();
+
+
 
         // return deleted!!
         //return redirect('');

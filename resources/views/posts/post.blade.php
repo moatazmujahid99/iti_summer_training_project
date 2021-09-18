@@ -8,7 +8,30 @@
                         <img src="{{ asset('images/users/' . $post->user->user_img) }}" alt="..."
                             class="img-circle img-post">
                     </div>
-                    <div class="media-body" style="color: aliceblue">
+                </div>
+            </div>
+
+            @if (Auth::user()->id === $post->user_id)
+            <div class="pull-right ">
+                <a href="/posts/{{$post->id}}/edit" >
+                    <img src="{{asset('images/icons/edit.svg')}}" width="23px" height="23px" title="Edit Post">
+                </a>
+
+                &nbsp;&nbsp;
+                <form class="float-right " style="display: inline" action="/posts/{{$post->id}}" method="post">
+                    @csrf
+                    @method("DELETE")
+
+                    <button title="Delete Post" style="border: none;background-color: rgb(66 103 178)" type="submit" value="Submit">
+                        <img width="23px" height="23px" style="color: red" src="{{asset('images/icons/trash.svg')}}">
+                    </button>
+                </form>
+
+            </div>
+            @endif
+
+                <div class="media">
+                    <div class="media-object pull-left" style="color: aliceblue">
                         <!--************Posted Friend name************-->
                         <a href="/users/{{$post->user_id}}/profile"
                             class="media-heading block mb-0 h4 text-white">{{ $post->user->first_name . ' ' . $post->user->last_name }}</a><br>
@@ -16,7 +39,8 @@
                         <span class="text-white h6">{{ $post->created_at->diffForHumans() }}</span>
                     </div>
                 </div>
-            </div><!-- /.pull-left -->
+
+
             <div class="pull-right" style="color: aliceblue">
                 <a href="" class="text-white h4"><i class="fa fa-heart" style="color:deeppink"></i> 15.5K</a>
             </div><!-- /.pull-right -->

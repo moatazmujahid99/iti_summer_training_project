@@ -32,7 +32,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
 
     Route::get('/', 'HomeController@index')->middleware('auth');
-    Route::get('/home', function(){
+    Route::get('/home', function () {
         return redirect('/');
     });
 
@@ -82,6 +82,8 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
 
     Route::resource('posts', 'PostController');
+
+
     Route::post('/posts/{id}/comments', [CommentController::class, 'addComment']);
     //Route::get('/home', 'HomeController@index')->name('home');
 

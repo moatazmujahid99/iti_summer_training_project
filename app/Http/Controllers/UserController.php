@@ -57,24 +57,24 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request ,$id)
+    public function show(Request $request, $id)
     {
-        $page = explode('/', $request->getRequestUri())[3];   
+        $page = explode('/', $request->getRequestUri())[3];
         if (Auth::id() == $id) {
             $user = Auth::user();
-        }else{
+        } else {
             $user = User::find($id);
         }
-        if($page == 'profile'){
+        if ($page == 'profile') {
             if (Auth::id() == $id) {
                 $view = 'profile.profile';
-            }else{
+            } else {
                 $view = 'user.show_user_posts';
             }
-        }else{
+        } else {
             if (Auth::id() == $id) {
                 $view = 'about.about';
-            }else{
+            } else {
                 $user = User::find($id);
                 $view = 'user.show_user_about';
             }
@@ -137,7 +137,7 @@ class UserController extends Controller
 
         ]);
 
-        return redirect("/users/".$user->id."/about");
+        return redirect("/users/" . $user->id . "/about");
     }
 
     /**
@@ -149,7 +149,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::destroy($id);
-        //return redirect("/users");  
+        //return redirect("/users");
         return 'destroy user' . $id;
     }
 }

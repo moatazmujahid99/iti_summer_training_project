@@ -13,17 +13,18 @@
 
             @if (Auth::user()->id === $post->user_id)
             <div class="pull-right ">
-                <a href="/posts/{{$post->id}}/edit" >
-                    <img src="{{asset('images/icons/edit.svg')}}" width="23px" height="23px" title="Edit Post">
+                <a href="/posts/{{$post->id}}/edit" title="Edit Post">
+                    <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" style="color: white"></i>
+
                 </a>
 
-                &nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;
                 <form class="float-right " style="display: inline" action="/posts/{{$post->id}}" method="post">
                     @csrf
                     @method("DELETE")
 
-                    <button title="Delete Post" style="border: none;background-color: rgb(66 103 178)" type="submit" value="Submit">
-                        <img width="23px" height="23px" style="color: red" src="{{asset('images/icons/trash.svg')}}">
+                    <button title="Delete Post" style="border: none ;background-color: rgb(66 103 178)" type="submit" value="Submit">
+                        <i class="fa fa-trash fa-2x" aria-hidden="true" style="color: red"></i>
                     </button>
                 </form>
 

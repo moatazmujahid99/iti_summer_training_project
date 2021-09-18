@@ -66,7 +66,7 @@ class PostController extends Controller
 
     public function update(Request $request, $id)
     {
-
+        
         // Validate posted form data
         $validated = $request->validate([
             'description' => 'required|string|min:5|max:2000',
@@ -100,11 +100,15 @@ class PostController extends Controller
 
         // return !!
         //return redirect('/post');
-        return redirect('/users/' . $user->id . '/profile');
+        //return redirect('/users/' . $user->id . '/profile');
+        return redirect($request->return);
     }
 
-    public function edit($id)
+    public function edit(Request $request ,$id)
     {
+
+        //dd($request->return);
+        
         $post = Post::find($id);
         $user = $post->user;
 
@@ -115,7 +119,8 @@ class PostController extends Controller
         //return view('posts.edit', compact('post'));
         return view('posts.edit_post', [
             'post' => $post,
-            'user' => $user
+            'user' => $user,
+            'return' => $request->return,
         ]);
     }
 

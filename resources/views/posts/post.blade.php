@@ -12,34 +12,39 @@
             </div>
 
             @if (Auth::user()->id === $post->user_id)
-            <div class="pull-right ">
-                <a href="/posts/{{$post->id}}/edit" title="Edit Post">
-                    <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" style="color: white"></i>
+                <div class="pull-right ">
+                    <form action="/posts/{{ $post->id }}/edit" style="display: inline">
+                        <input type="hidden" name="return" value="{{ Request::path() }}" />
+                        <button type="submit" title="Edit Post" style="border: none ;background-color: rgb(66 103 178)">
+                            <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" style="color: white"></i>
 
-                </a>
+                        </button>
+                    </form>
+                    &nbsp;&nbsp;&nbsp;
+                    <form class="float-right " style="display: inline" action="/posts/{{ $post->id }}"
+                        method="post">
+                        @csrf
+                        @method("DELETE")
 
-                &nbsp;&nbsp;&nbsp;
-                <form class="float-right " style="display: inline" action="/posts/{{$post->id}}" method="post">
-                    @csrf
-                    @method("DELETE")
+                        <button title="Delete Post" style="border: none ;background-color: rgb(66 103 178)"
+                            type="submit" value="Submit">
+                            <i class="fa fa-trash fa-2x" aria-hidden="true" style="color: red"></i>
+                        </button>
+                    </form>
 
-                    <button title="Delete Post" style="border: none ;background-color: rgb(66 103 178)" type="submit" value="Submit">
-                        <i class="fa fa-trash fa-2x" aria-hidden="true" style="color: red"></i>
-                    </button>
-                </form>
-
-            </div>
+                </div>
             @endif
 
-                <div class="media">
-                    <div class="media-object pull-left" style="color: aliceblue">
-                        <!--************Posted Friend name************-->
-                        <a href="/users/{{$post->user_id}}/profile"
-                            class="media-heading block mb-0 h4 text-white">{{ $post->user->first_name . ' ' . $post->user->last_name }}</a><br>
-                        <!--************Posted Date************-->
-                        <span class="text-white h6">{{ $post->created_at->diffForHumans() }}</span>
-                    </div>
+            <div class="media">
+                <div class="media-object pull-left" style="color: aliceblue">
+                    <!--************Posted Friend name************-->
+                    <a href="/users/{{ $post->user_id }}/profile"
+                        class="media-heading block mb-0 h4 text-white">{{ $post->user->first_name . ' ' . $post->user->last_name }}</a><br>
+                    <!--************Posted Date************-->
+                    <span
+                        class="text-white h6">{{ $post->created_at == $post->updated_at ? '' : 'Edited ' }}{{ $post->updated_at->diffForHumans() }}</span>
                 </div>
+            </div>
 
 
             <div class="pull-right" style="color: aliceblue">
@@ -61,7 +66,7 @@
             @endphp --}}
 
             @isset($post->post_img)
-            <img src="{{ asset('images/posts/' . $post->post_img) }}" class="img-responsive full-width">
+                <img src="{{ asset('images/posts/' . $post->post_img) }}" class="img-responsive full-width">
             @endisset
 
 

@@ -28,7 +28,7 @@
                                     <td class="field"><strong> Post Image</strong></td>
                                     <td>
 
-                                        <img width="280px" height="180px" src="{{ asset('images/posts/' . $post->post_img) }}" class="img-responsive full-width">
+                                        <img width="280px" height="180px" src="{{ asset('images/posts/' . $post->post_img) }}" class="img-responsive full-width" id="show_image">
                                     </td>
                                 </tr>
                                 @endisset
@@ -36,7 +36,7 @@
                                 <tr>
                                     <td class="field"><strong> Select Post Image</strong></td>
                                       <!--**************Profile Img**********-->
-                                    <td><input style="width: 353.53px" type="file" id="post_img" name="post_img" class="form-control{{ $errors->has('post_img') ? ' border-danger' : '' }}" style="background-color: white;"></td>
+                                    <td><input style="width: 353.53px" type="file" id="file-input" name="post_img" class="form-control{{ $errors->has('post_img') ? ' border-danger' : '' }}" style="background-color: white;"></td>
 
                                     <td style="font-weight: bold" class="form-text text-danger">{!! $errors->first('post_img') !!}</td>
 
@@ -51,6 +51,7 @@
                                        <!--**************Update Button**********-->
                                        <button type="submit" class="btn btn-primary width-150">Update</button>
 
+                                       <a class="btn btn-white btn-white-without-border width-150 m-l-5" href="/{{$return=='/'?'':$return}}">Cancel</a>
 
                                    </td>
                                  </tr>
@@ -58,6 +59,7 @@
                                </tbody>
                             </table>
                          </div>
+                         <input type="hidden" name="return" value="{{$return}}" />
                     </form>
 
                      <!-- end table -->

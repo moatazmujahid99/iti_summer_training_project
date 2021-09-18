@@ -85,11 +85,11 @@
                                     <i class="fa fa-bars"></i>
                                 </button>
                                 <ul class="dropdown-menu pull-right no-border" role="menu">
-                                    <li class="active"><a href="{{ url('/profile') }}"><i
+                                    <li class="active"><a href="users/{{Auth::id()}}/profile"><i
                                                 class="fa fa-fw fa-clock-o"></i> <span>Profile</span></a></li>
-                                    <li><a href="{{ url('/about') }}"><i class="fa fa-fw fa-user"></i>
+                                    <li><a href="/users/{{Auth::id()}}/about"><i class="fa fa-fw fa-user"></i>
                                             <span>About</span></a></li>
-                                    <li><a href="{{ url('/friends') }}"><i class="fa fa-fw fa-users"></i><span>
+                                    <li><a href="users/{{Auth::id()}}/friends"><i class="fa fa-fw fa-users"></i><span>
                                                 Friends </span></a></li>
                                 </ul>
                             </div>

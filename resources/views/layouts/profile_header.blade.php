@@ -104,7 +104,7 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/preview_image.js') }}"></script>
 </body>
 
 </html>

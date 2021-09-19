@@ -45,9 +45,15 @@ second we go to this branch using <br>
 
 ### step 2:
 now after finshing our task we need to push our work to our branch <br>
-*note: we push to development branch not master branch so if any thing go wrong our master wont affected by it* <br>
-we do this using
+*note: we push to our branch not master branch so if any thing go wrong our master wont affected by it* <br>
+we do this using :
 - `git push origin [branch_name]`
+
+### step 3:
+Finally after finishing all the tasks and test it well, now we are ready to merge our branch with development branch 
+we do this using :
+- `git checkout development`
+- `git merge [branch_name]`
 
 <br>
 
@@ -57,15 +63,22 @@ we do this using
 
 ## How to use API
 
-- `/users`
+<br>
+
+first we got to `/api/sanctum/token` and create token by providing email and password in url body 
+
+second we use this urls to get what we want :
+
+
+- `/api/users`
   - return all users
 
-- `/users/{id}/posts`
+- `/api/users/{id}/posts`
   - return all posts for specific user
   
-- `/posts`
+- `/api/posts`
   - return all posts
 
-- `/posts/{id}/comments`
+- `/api/posts/{id}/comments`
   - return all comments for specific post
 

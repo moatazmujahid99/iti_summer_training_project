@@ -16,16 +16,21 @@ document.getElementById('file-input').onchange = function () {
     document.getElementById('show_image').setAttribute("width", "280px");
     document.getElementById('show_image').setAttribute("height", "180px");
 
-    var element = document.getElementById("exist");
 
-    if (!element) {
-        const elem = document.createElement('td');
-        elem.innerText = 'Post Image';
-        elem.className = "field";
-        elem.style.fontWeight = "bold";
+    if (document.getElementById("created_td")) {
+        document.getElementById("created_td").remove();
+    }
 
-        const target = document.querySelector('#before_it');
-        target.parentNode.insertBefore(elem, target);
+    if (!document.getElementById("existing_td")) {
+
+        const created_td = document.createElement('td');
+        created_td.innerText = 'Post Image';
+        created_td.className = "field";
+        created_td.setAttribute("id", "created_td")
+        created_td.style.fontWeight = "bold";
+
+        const image_container_td = document.querySelector('#image_container_td');
+        image_container_td.parentNode.insertBefore(created_td, image_container_td);
     }
 
 

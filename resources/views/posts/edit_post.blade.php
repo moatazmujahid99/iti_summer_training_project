@@ -26,10 +26,10 @@
 
                                 <tr>
                                     @isset($post->post_img)
-                                    <td id="exist" class="field"><strong> Post Image</strong></td>
+                                    <td id="existing_td" class="field"><strong> Post Image</strong></td>
                                     @endisset
 
-                                    <td id="before_it">
+                                    <td id="image_container_td">
                                         <img
                                         @isset($post->post_img)
                                             width="280px" height="180px"

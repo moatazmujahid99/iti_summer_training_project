@@ -46,7 +46,7 @@
                                                     }
                                                 @endphp --}}
 
-                                                <img height="92px"
+                                                <img height="93px" width="93px"
                                                     src="{{ asset('images/users/' . $user->user_img) }}">
 
                                             </div>

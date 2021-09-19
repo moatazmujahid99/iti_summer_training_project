@@ -50,7 +50,6 @@ Route::post('/sanctum/token', function (Request $request) {
     $request->validate([
         'email' => 'required|email',
         'password' => 'required',
-        'device_name' => 'required',
     ]);
 
     $user = User::where('email', $request->email)->first();
@@ -61,5 +60,5 @@ Route::post('/sanctum/token', function (Request $request) {
         ]);
     }
 
-    return $user->createToken($request->device_name)->plainTextToken;
+    return $user->createToken('mytoken')->plainTextToken;
 });

@@ -23,15 +23,22 @@
 
                                 </tr>
 
-                                @isset($post->post_img)
-                                <tr>
-                                    <td class="field"><strong> Post Image</strong></td>
-                                    <td>
 
-                                        <img width="280px" height="180px" src="{{ asset('images/posts/' . $post->post_img) }}" class="img-responsive full-width" id="show_image">
+                                <tr>
+                                    @isset($post->post_img)
+                                    <td id="exist" class="field"><strong> Post Image</strong></td>
+                                    @endisset
+
+                                    <td id="before_it">
+                                        <img
+                                        @isset($post->post_img)
+                                            width="280px" height="180px"
+                                            src="{{ asset('images/posts/' . $post->post_img)}}"
+                                        @endisset
+                                          class="img-responsive full-width" id="show_image">
                                     </td>
                                 </tr>
-                                @endisset
+
 
                                 <tr>
                                     <td class="field"><strong> Select Post Image</strong></td>

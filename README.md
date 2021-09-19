@@ -12,7 +12,7 @@ clone project to your computer using
 <br>
 
 ### step 2:
-get into project using  `iti_summer_training_project` command.
+get into project using  `cd iti_summer_training_project` command.
 
 <br>
 

@@ -6,6 +6,9 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\UserPostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,21 +26,40 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get(
-    '/users', 
+    '/users',
     [UserController::class, 'index']
-);
+)->middleware('auth:sanctum');
 
 Route::get(
     '/users/{id}/posts',
     [UserPostController::class, 'index']
-);
+)->middleware('auth:sanctum');
 
 Route::get(
     '/posts',
     [PostController::class, 'index']
-);
+)->middleware('auth:sanctum');
 
 Route::get(
-    '/posts/{id}/comments', 
+    '/posts/{id}/comments',
     [PostCommentController::class, 'index']
-);
+)->middleware('auth:sanctum');
+
+
+Route::post('/sanctum/token', function (Request $request) {
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+        'device_name' => 'required',
+    ]);
+
+    $user = User::where('email', $request->email)->first();
+
+    if (!$user || !Hash::check($request->password, $user->password)) {
+        throw ValidationException::withMessages([
+            'email' => ['The provided credentials are incorrect.'],
+        ]);
+    }
+
+    return $user->createToken($request->device_name)->plainTextToken;
+});

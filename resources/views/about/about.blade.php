@@ -36,11 +36,11 @@
                                 <td>
                                     <!--****************Bio************-->
                                     @isset($user->description)
-                                        <textarea style="resize: none" name="description"
+                                        <textarea style=" width: 500px; height: 150px; resize: both; overflow: auto;" name="description"
                                             class="form-control input-lg no-border" rows="2"
                                             disabled>{{ $user->description }}</textarea>
                                     @else
-                                        <textarea style="resize: none" name="description"
+                                        <textarea name="description"
                                             class="form-control input-lg no-border" rows="2"
                                             disabled>Tell me about yourself</textarea>
                                     @endisset

@@ -43,8 +43,7 @@
 
         <input type="password" name="password_confirmation" placeholder="confirm password" />
 
-        <input id="birthdate" type="text" class="form-control @error('birthdate') is-invalid @enderror" name="birthdate"
-            placeholder="Birth Date  dd/mm/yyyy">
+        <input id="birthdate" type="date" class="form-control @error('birthdate') is-invalid @enderror" name="birthdate">
 
         @error('birthdate')
             <span class="invalid-feedback" role="alert">

@@ -32,7 +32,7 @@
 
                                     <tr>
                                         <td class="field"><strong> Mobile</strong></td>
-                                       <!--****************Last Name************-->
+                                       <!--****************Mobile Number************-->
                                        <td> <textarea style="width: 353.53px;resize: none" id="phone_number" name="phone_number" class="form-control{{ $errors->has('phone_number') ? ' border-danger' : '' }}" rows="1" >{{ Auth::user()->phone_number ?? ''}}</textarea></td>
 
                                        <td style="font-weight: bold" class="form-text text-danger">{!! $errors->first('phone_number') !!}</td>
@@ -41,7 +41,7 @@
 
                                   <tr >
                                     <td class="field"><strong> Bio</strong></td>
-                                    <!--****************Last Name************-->
+                                    <!--****************Bio************-->
                                     <td> <textarea style="width: 353.53px;" id="description" name="description" class="form-control{{ $errors->has('description') ? ' border-danger' : '' }}" rows="2" >{{ Auth::user()->description ?? ''}}</textarea></td>
 
                                     <td style="font-weight: bold" class="form-text text-danger">{!! $errors->first('description') !!}</td>
@@ -53,14 +53,14 @@
                                   </tr>
                                   <tr>
                                     <td class="field"><strong> Country/Region</strong></td>
-                                    <!--****************Last Name************-->
+                                    <!--****************Country/Region************-->
                                     <td> <textarea style="width: 353.53px;resize: none" id="country" name="country" class="form-control{{ $errors->has('country') ? ' border-danger' : '' }}" rows="1" >{{ Auth::user()->country ?? ''}}</textarea></td>
 
                                     <td style="font-weight: bold" class="form-text text-danger">{!! $errors->first('country') !!}</td>
                                 </tr>
 
                                   <td class="field"><strong> City</strong></td>
-                                       <!--****************Last Name************-->
+                                       <!--****************City************-->
                                        <td> <textarea style="width: 353.53px;resize: none" id="city" name="city" class="form-control{{ $errors->has('city') ? ' border-danger' : '' }}" rows="1" >{{ Auth::user()->city ?? ''}}</textarea></td>
 
                                        <td style="font-weight: bold" class="form-text text-danger">{!! $errors->first('city') !!}</td>

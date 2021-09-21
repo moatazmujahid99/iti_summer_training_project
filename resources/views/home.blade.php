@@ -18,7 +18,7 @@
     <div class="container bootstrap snippets bootdeys">
         <div class="row">
             <!--access profile-->
-            <div class="col-lg-3 col-md-3 col-sm-4">
+            <div class="col-lg-3 col-md-3 col-sm-4" style="word-wrap: break-word;">
                 <div class="panel rounded shadow">
                     <div class="panel-body">
                         <div class="inner-all">
@@ -34,10 +34,9 @@
                                         }
 
                                     @endphp --}}
-                                    <img width="210" height="210" style="border-radius: 50%"
-                                        src={{ asset('images/users/' . Auth::user()->user_img) }}>
+                                    <img width="185" height="195" class="center" style="border-radius: 50%" src="http://127.0.0.1:8000/images/users/male.png">
                                 </li>
-                                <li class="text-center">
+                                <li class="text-center" style="max-width: 500;">
                                     <!--**************My Name****************-->
                                     <h4 class="text-capitalize">
                                         {{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}</h4>

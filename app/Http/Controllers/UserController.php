@@ -114,7 +114,7 @@ class UserController extends Controller
             'last_name' => 'required|min:3|max:250',
             'phone_number' => 'nullable|digits:11',
             'description' => 'nullable|min:6|max:250',
-            'user_img' => 'nullable|mimes:jpg,jpeg,png',
+            'user_img' => 'image|max:1050|nullable|mimes:jpg,jpeg,png',
         ]);
 
         if (isset($request->user_img)) {

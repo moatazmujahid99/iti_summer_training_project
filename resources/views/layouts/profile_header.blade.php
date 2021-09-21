@@ -17,6 +17,22 @@
             text-align: left;
         }
 
+
+        /******************* Start of removing arrows form the input number **************/
+        /*This is to remove arrows form the input number*/
+        /*In Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+        -moz-appearance: textfield;
+        }
+        /******************* END of removing arrows form the input number **************/
+
     </style>
 </head>
 

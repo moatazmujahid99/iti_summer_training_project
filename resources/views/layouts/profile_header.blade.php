@@ -74,7 +74,7 @@
                                             <!-- END profile-header-img -->
                                             <!-- BEGIN profile-header-info -->
                                             <div class="profile-header-info">
-                                                <div style=" width:250px; word-wrap: break-word; margin: auto;
+                                                <div style=" width:250px; word-wrap: break-word;
                                                 width: 50%;">
                                                     <!-- **************My name*************-->
                                                     <h4 class="m-t-10 m-b-5">

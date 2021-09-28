@@ -110,11 +110,11 @@ class UserController extends Controller
         $user = User::find($id);
 
         $request->validate([
-            'first_name' => 'required|min:3',
-            'last_name' => 'required|min:3',
-            'phone_number' => 'nullable|numeric',
-            'description' => 'nullable|min:6',
-            'user_img' => 'nullable|mimes:jpg,jpeg,png',
+            'first_name' => 'required|min:3|max:250',
+            'last_name' => 'required|min:3|max:250',
+            'phone_number' => 'nullable|digits:11',
+            'description' => 'nullable|min:6|max:250',
+            'user_img' => 'image|max:1050|nullable|mimes:jpg,jpeg,png',
         ]);
 
         if (isset($request->user_img)) {

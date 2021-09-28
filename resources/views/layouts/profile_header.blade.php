@@ -12,7 +12,28 @@
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <style>
+        .table.table-profile>tbody>tr>td.field {
+            text-align: left;
+        }
 
+
+        /******************* Start of removing arrows form the input number **************/
+        /*This is to remove arrows form the input number*/
+        /*In Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+        -moz-appearance: textfield;
+        }
+        /******************* END of removing arrows form the input number **************/
+
+    </style>
 </head>
 
 <body>
@@ -53,15 +74,18 @@
                                             <!-- END profile-header-img -->
                                             <!-- BEGIN profile-header-info -->
                                             <div class="profile-header-info">
-                                                <!-- **************My name*************-->
-                                                <h4 class="m-t-10 m-b-5">
-                                                    {{ $user->first_name . ' ' . $user->last_name }}
-                                                </h4>
-                                                <!-- **************My bio*************-->
-                                                <p class="m-b-10">{{ $user->description }}</p>
-                                                <a href="{{ url('/') }}"
-                                                    class="btn btn-primary btn-sm ">Timeline</a>
-                                                <div style="height: 8px"></div>
+                                                <div style=" width:250px; word-wrap: break-word; margin: auto;
+                                                width: 50%;">
+                                                    <!-- **************My name*************-->
+                                                    <h4 class="m-t-10 m-b-5">
+                                                        {{ $user->first_name . ' ' . $user->last_name }}
+                                                    </h4>
+                                                    <!-- **************My bio*************-->
+                                                    <p class="m-b-10">{{ $user->description }}</p>
+                                                    <a href="{{ url('/') }}"
+                                                        class="btn btn-primary btn-sm ">Timeline</a>
+                                                    <div style="height: 8px"></div>
+                                                </div>
                                             </div>
                                             <!-- END profile-header-info -->
                                         </div>

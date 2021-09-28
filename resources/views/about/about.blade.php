@@ -10,19 +10,25 @@
                 <div class="table-responsive">
                     <table class="table table-profile">
                         <tbody>
+                             <!--****************Start First Name**********************-->
                             <tr>
                                 <td class="field"><strong> First Name</strong></td>
-                                <!--****************First Name************-->
                                 <td> {{ $user->first_name }}</td>
                             </tr>
+                            <!--****************END Last Name********************-->
+
+
+                            <!--****************Start Last Name******************-->
                             <tr>
                                 <td class="field"><strong>Last Name</strong></td>
-                                <!--****************Last Name************-->
                                 <td> {{ $user->last_name }}</td>
                             </tr>
+                            <!--****************END Last Name*********************-->
+
+                            <!--****************Start of Mobile Number ************-->
                             <tr>
                                 <td class="field"><strong>Mobile</strong></td>
-                                <!--****************Mobile Number ************-->
+                              
                                 @isset($user->phone_number)
 
                                     <td> {{ $user->phone_number }}</td>
@@ -31,25 +37,34 @@
                                 @endisset
 
                             </tr>
+                            <!--****************End of Mobile Number ************-->
+
+
+                            <!--****************Start of Bio***********************-->
                             <tr class="highlight">
                                 <td class="field"><strong> Bio</strong></td>
                                 <td>
-                                    <!--****************Bio************-->
+                                    
                                     @isset($user->description)
-                                        <textarea style="resize: none" name="description"
+                                        <textarea style=" width: 500px; height: 150px; resize: both; overflow: auto;" name="description"
                                             class="form-control input-lg no-border" rows="2"
                                             disabled>{{ $user->description }}</textarea>
                                     @else
-                                        <textarea style="resize: none" name="description"
+                                        <textarea name="description"
                                             class="form-control input-lg no-border" rows="2"
                                             disabled>Tell me about yourself</textarea>
                                     @endisset
 
                                 </td>
                             </tr>
+                            <!--****************END of Bio***********************-->
+
                             <tr class="divider">
                                 <td colspan="2"></td>
                             </tr>
+
+
+                            <!--****************Start of Country/Region**********-->
                             <tr>
                                 <td class="field"><strong>Country/Region</strong></td>
                                 @isset($user->country)
@@ -59,6 +74,10 @@
                                 @endisset
 
                             </tr>
+                          <!--****************END of Country/Region************-->
+
+
+                            <!--****************Start of City*******************-->
                             <tr>
                                 <td class="field"><strong>City</strong></td>
                                 @isset($user->city)
@@ -66,30 +85,36 @@
                                 @else
                                     <td>Please add your city</td>
                                 @endisset
-
                             </tr>
+                            <!--****************END of City***********************-->
 
+                            <!--*****************Start Gender*********************-->
                             <tr>
                                 <td class="field"><strong>Gender</strong></td>
                                 <td>{{ $user->gender }}</td>
                             </tr>
+                            <!--****************END of Gender**********************-->
+
+
+                            <!--*****************Start Birthdate******************-->
                             <tr>
                                 <td class="field"><strong>Birthdate</strong></td>
                                 <td>{{ $user->birthdate }}</td>
                             </tr>
+                            <!--****************END of Birthdate******************-->
 
 
-
+                            <!--****************Start Update Button**********-->
                             <tr class="highlight">
                                 <td class="field">&nbsp;</td>
                                 <td class="p-t-10 p-b-10">
-                                    <!--**************Update Button**********-->
-
-                                    <a class="btn btn-primary width-150" href="/users/{{ $user->id }}/edit">Edit your
-                                        profile</a>
-
+                                    <a class="btn btn-primary width-150" href="/users/{{ $user->id }}/edit">
+                                        Edit your profile
+                                    </a>
                                 </td>
                             </tr>
+
+                            <!--***************END Update Button**********-->
                         </tbody>
                     </table>
                 </div>

@@ -68,9 +68,9 @@
                                                 @elseif (Auth::user()->hasFriendRequestFrom($user))
 
                                                     <a href="/accept/{{ $user->id }}" class="btn btn-success "
-                                                        style="height: 35px; padding-top:3px">Accept</a>
+                                                        style="height: 30px; padding-top:3px">Accept</a>
                                                     <a href="/deny/{{ $user->id }}" class="btn btn-danger "
-                                                        style="height: 35px; padding-top:3px">Deny</a>
+                                                        style="height: 30px; padding-top:3px">Deny</a>
 
 
                                                 @elseif(Auth::user()->isFriendWith($user))
@@ -83,12 +83,12 @@
                                                 @elseif(Auth::user()->id !== $user->id)
 
                                                     <a href="/sent_to/{{ $user->id }}" class="btn btn-primary "
-                                                        style="height: 35px; padding-top:3px">Add Friend</a>
+                                                        style="height: 30px; padding-top:3px">Add Friend</a>
                                                 @endif
 
                                                 <a href="/users/{{ Auth::id() }}/profile"
                                                     class="btn btn-secondary btn-sm ml-2"
-                                                    style="height: 35px; padding-top:5px">Back To Your Profile</a>
+                                                    style="height: 30px; padding-top:5px">Back To Your Profile</a>
 
                                                 <div style="height: 6px"></div>
 

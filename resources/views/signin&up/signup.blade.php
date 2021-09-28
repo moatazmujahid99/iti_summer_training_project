@@ -51,13 +51,6 @@
             </span>
         @enderror
 
-        <pre style="margin-top:-5; height: 7%">Profile Image<input type="file" id="profile_img" class="form-control @error('user_img') is-invalid @enderror" name="user_img" style="background-color: white; height: 100%;"></pre>
-
-        @error('user_img')
-            <span class="invalid-feedback" role="alert">
-                <strong style="font-size: 10px; color:red">{{ $message }}</strong>
-            </span>
-        @enderror
 
         <table>
             <tr>
